@@ -3,4 +3,10 @@ exclude =
   migration,
   __pycache__,
   manage.py,
-  settings.py
+  settings.py,
+  .svn,
+  CVS,
+  .bzr,
+  .hg,
+  .git
+max-line-length = 125
