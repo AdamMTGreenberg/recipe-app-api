@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 class ModelTests(TestCase):
 
+
     def test_create_user_with_email_successful(self):
         """Test Creating a new user with an email is successful"""
         email = 'test@adam.com'
@@ -28,3 +29,14 @@ class ModelTests(TestCase):
         """Test creating email with no email raises error"""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(None, 'test123')
+
+
+    def test_create_new_superuser(self):
+        """Test creating a new superuser"""
+        user = get_user_model().objects.create_superuser(
+            'test@adam.com',
+            "test123"
+        )
+
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
